@@ -51,7 +51,7 @@ option(PNGARG        "Disable ANSI-C prototypes" OFF)
 set(PNG_LIB_NAME png${PNGLIB_MAJOR}${PNGLIB_MINOR})
 
 # to distinguish between debug and release lib
-set(CMAKE_DEBUG_POSTFIX "d")
+# set(CMAKE_DEBUG_POSTFIX "d")
 
 # Use the prebuilt pnglibconf.h file from the scripts folder
 # TODO: fix this by building with awk; without this no cmake build can be
@@ -313,12 +313,12 @@ if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
   endif(PNG_SHARED)
 
   if(PNG_STATIC)
-    if(NOT WIN32 OR CYGWIN OR MINGW)
+    if(0) #NOT WIN32 OR CYGWIN OR MINGW)
       get_target_property(BUILD_TARGET_LOCATION ${PNG_LIB_NAME_STATIC} LOCATION_${CMAKE_BUILD_TYPE})
       CREATE_SYMLINK(${BUILD_TARGET_LOCATION} libpng${CMAKE_STATIC_LIBRARY_SUFFIX})
       install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpng${CMAKE_STATIC_LIBRARY_SUFFIX}
          DESTINATION ${CMAKE_INSTALL_LIBDIR})
-    endif(NOT WIN32 OR CYGWIN OR MINGW)
+    endif(0) #NOT WIN32 OR CYGWIN OR MINGW)
  endif()
 endif()
 
